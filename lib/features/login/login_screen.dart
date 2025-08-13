@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
+import 'package:testando/features/registro/register_screen.dart';
 import 'package:testando/widgets/rounded_button.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -36,6 +36,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             TextField(
+              onChanged: (value) => loginProvider.email = value,
               decoration: InputDecoration(
                 labelText: "E-mail",
                 labelStyle: TextStyle(
@@ -50,6 +51,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextField(
+              onChanged: (value) => loginProvider.password = value,
               decoration: InputDecoration(
                 labelText: "Senha",
                 labelStyle: TextStyle(
@@ -76,15 +78,25 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 44),
             RoundedButton(
-              onPressed: () =>
-                loginProvider.login(loginProvider.email, loginProvider.password),
+              isLoading: loginProvider.isLoading,
+              onPressed: () {
+                loginProvider.login(loginProvider.email, loginProvider.password);
+                print("Login attempt for ${loginProvider.email}");
+              },
               text: 'Entrar',
             ),
             const SizedBox(height: 16),
-            Text("Criar-conta",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
+            InkWell(
+              onTap: () {
+                // Navega para a rota '/create_account'
+                Navigator.pushNamed(context, RegisterScreen.routeName);
+              },
+              child: Text(
+                "Criar-conta",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ),
             ),
           ],

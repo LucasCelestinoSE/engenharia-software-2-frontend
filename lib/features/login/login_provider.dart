@@ -11,23 +11,34 @@ class LoginProvider with ChangeNotifier {
 
   bool _isLoading = false;
   String? _errorMessage;
-  String _email = "lucas123"; // Placeholder para o email
-  String _password = "Lucas123"; // Placeholder para a senha
+  late String _email = ''; // Placeholder para o email
+  late String _password = ''; // Placeholder para a senha
   String get email => _email;
   String get password => _password;
+
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
+  set email(String value) {
+    _email = value;
+    print("Email set to: $_email");
+    notifyListeners();
+  }
+
+  set password(String value) {
+    _password = value;
+    
+    notifyListeners();
+  }
+
   Future<bool> login(String email, String password) async {
+
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
-      // A lógica interna continua a mesma
-      // final response = await _userRepository.login(UserLoginRequest(email: email, password: password),1);
-      _email = "lucas1234";
-      _password = "Lucas1234";
+      final response = await _userRepository.login(UserLoginRequest(email: email, password: password));
       _isLoading = false;
       notifyListeners();
       return true;
