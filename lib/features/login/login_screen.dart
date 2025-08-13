@@ -34,39 +34,57 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
-                labelText: loginProvider.email,
+                labelText: "E-mail",
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                ),
                 filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(),
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: loginProvider.password,
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(),
-              ),
-            ),
-            Text("esqueci a senha",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.blue,
+                fillColor: Color(0xFF948B80),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(15)),
               ),
             ),
             const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: "Senha",
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                ),
+                filled: true,
+                fillColor: Color(0xFF948B80),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(15)),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "esqueceu a senha?",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 44),
             RoundedButton(
               onPressed: () =>
                 loginProvider.login(loginProvider.email, loginProvider.password),
               text: 'Entrar',
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Text("Criar-conta",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.blue,
+                color: Colors.black,
               ),
             ),
           ],
