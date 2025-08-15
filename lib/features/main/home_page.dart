@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testando/features/login/login_screen.dart';
+import 'package:testando/features/profile/profile_screen.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -40,14 +42,14 @@ class MyHomePage extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.center,
-              'Estamos aqui para ajudar você a mapear seu estado emocional e humor',
+              'Estamos aqui para ajudar você a mapear seu estado emocional e ola',
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.black,
                 
               ),
             ),
-            const Spacer(), // ESTA É A MÁGICA! Empurra o botão para baixo.
+            const Spacer(),
             SizedBox(
               width: 350,
               height: 50,
@@ -56,8 +58,8 @@ class MyHomePage extends StatelessWidget {
                   backgroundColor: Color(0xFF5EBDED),
                   foregroundColor: Color(0xFF0D171C),
                 ),
-                onPressed: () {  Navigator.pushNamed(context, '/login');},
-                child: Text('TextButton',
+                onPressed: () {  Navigator.pushNamed(context, LoginScreen.routeName);},
+                child: Text('Começar',
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.black,
