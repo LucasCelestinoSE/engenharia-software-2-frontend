@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:testando/artigos.dart';
-import 'package:testando/respiracao.dart';
+import 'package:testando/features/static/artigos.dart';
+import 'package:testando/features/static/respiracao.dart';
 
 class RecursoTelefone {
   final String nome;

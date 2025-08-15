@@ -1,8 +1,8 @@
 import 'package:testando/data/api/api_client.dart';
-import 'package:testando/data/requests/user_entry/user_login.dart';
-import 'package:testando/data/requests/user_entry/user_register.dart';
-import 'package:testando/data/responses/user_login_response.dart';
-import 'package:testando/data/responses/user_register_response.dart';
+import 'package:testando/data/api/requests/user_entry/user_login.dart';
+import 'package:testando/data/api/requests/user_entry/user_register.dart';
+import 'package:testando/data/api/responses/user_login_response.dart';
+import 'package:testando/data/api/responses/user_register_response.dart';
 
 abstract class IUserRepository {
   // Aqui está a interface do repositório de usuário.
