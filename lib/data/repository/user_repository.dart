@@ -22,12 +22,17 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<UserRegisterResponse> createUser(UserRegisterRequest registerRequest) {
-    return api.createUser(registerRequest);
+    try {
+      return api.createUser(registerRequest);
+    } catch (e) {
+      print("Error creating user: ${registerRequest.email}");
+      rethrow;
+    }
   }
 
   @override
   Future<UserLoginResponse> login(UserLoginRequest request) {
-    try{
+    try {
       return api.login(request);
     } catch (e) {
       print("Error logging in user: ${request.email}");

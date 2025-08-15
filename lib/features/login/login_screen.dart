@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/features/login/login_provider.dart';
-import 'package:testando/features/registro/register_screen.dart';
+import 'package:testando/features/register/register_screen.dart';
 import 'package:testando/widgets/rounded_button.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
