@@ -21,6 +21,7 @@ void main() {
             // Lê o UserRepository que acabamos de disponibilizar
             context.read<UserRepository>(),
           ),
+        
         ),
       ],
       child: const MyApp(),

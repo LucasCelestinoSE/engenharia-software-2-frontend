@@ -27,19 +27,20 @@ class LoginProvider with ChangeNotifier {
 
   set password(String value) {
     _password = value;
-    
+    print("Password set to: $_password");
     notifyListeners();
   }
 
   Future<bool> login(String email, String password) async {
 
-    _isLoading = true;
+    _isLoading = false;
     _errorMessage = null;
     notifyListeners();
 
     try {
+      _isLoading = true;
       final response = await _userRepository.login(UserLoginRequest(email: email, password: password));
-      _isLoading = false;
+      print(response.token);
       notifyListeners();
       return true;
     } catch (e) {
