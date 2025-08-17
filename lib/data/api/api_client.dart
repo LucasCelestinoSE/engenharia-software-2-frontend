@@ -13,6 +13,6 @@ abstract class ApiClient {
 
   @POST("/login")
   Future<UserLoginResponse> login(@Body() UserLoginRequest request);
-   @POST("/users")
-  Future<UserRegisterResponse> createUser(@Body() UserRegisterRequest registerRequest);
+  @POST("/users")
+  Future<UserRegisterResponse> registerUser(@Body() UserRegisterRequest registerRequest);
 }

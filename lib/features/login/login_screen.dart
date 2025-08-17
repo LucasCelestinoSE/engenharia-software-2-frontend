@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/features/login/login_provider.dart';
+import 'package:testando/features/register/register_page.dart';
 import 'package:testando/features/register/register_screen.dart';
 import 'package:testando/widgets/rounded_button.dart';
 class LoginScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
     // Obtém o LoginProvider do contexto para acessar os dados de login
     // Isso permite que a tela de login reaja a mudanças no estado do LoginProvider.
     final loginProvider = context.watch<LoginProvider>();
+    
     return Scaffold(
       backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
@@ -89,7 +91,7 @@ class LoginScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 // Navega para a rota '/create_account'
-                Navigator.pushNamed(context, RegisterScreen.routeName);
+                Navigator.pushNamed(context, RegisterPage.routeName);
               },
               child: Text(
                 "Criar-conta",

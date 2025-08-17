@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testando/data/models/user.dart';
 import 'package:testando/data/repository/user_repository.dart';
@@ -22,14 +23,15 @@ abstract class ISessionManager {
     Future<bool> removeUser() async {
         return true;
     }
+    
 }
 
-class SessionManager implements ISessionManager {
+class SessionManager extends ChangeNotifier implements ISessionManager {
 
     static const String _keyToken = 'token';
     static const String _keyUser = 'user';
-
     SessionManager(UserRepository userRepository);
+    
     @override
     Future<bool> setToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -64,5 +66,12 @@ class SessionManager implements ISessionManager {
   Future<bool> removeUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.remove(_keyUser);
+  }
+  
+  void testeLocalStorage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('teste', 'teste');
+    String? teste = prefs.getString('teste');
+    print(teste); 
   }
 }

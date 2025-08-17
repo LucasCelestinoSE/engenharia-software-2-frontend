@@ -58,7 +58,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<UserRegisterResponse> createUser(
+  Future<UserRegisterResponse> registerUser(
       UserRegisterRequest registerRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
