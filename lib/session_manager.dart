@@ -35,7 +35,7 @@ class SessionManager extends ChangeNotifier implements ISessionManager {
     @override
     Future<bool> setToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString(_keyToken, token);
+    return prefs.setString(_keyToken, 'Bearer $token');
   }
     @override
     Future<String?> getToken() async {
@@ -57,8 +57,10 @@ class SessionManager extends ChangeNotifier implements ISessionManager {
     return User(
       name: userMap['name'],
       email: userMap['email'],
-      birthDate: userMap['birthDate'],
-      password: userMap['password'],
+      dateOfBirth: userMap['date_of_birth'] as String?,
+
+      id: userMap['id'],
+      isActive: userMap['isActive'] ?? true,
     );
   }
 

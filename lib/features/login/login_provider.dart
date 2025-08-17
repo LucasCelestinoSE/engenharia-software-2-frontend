@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
+import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/session_manager.dart';
 
 class LoginProvider with ChangeNotifier {
@@ -34,7 +35,7 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> login(String email, String password) async {
+  Future<bool> login(String email, String password, BuildContext context) async {
 
     _isLoading = false;
     _errorMessage = null;
@@ -43,9 +44,13 @@ class LoginProvider with ChangeNotifier {
     try {
       _isLoading = true;
       final response = await _userRepository.login(UserLoginRequest(email: email, password: password));
-      _sessionManager.setToken(response.token);
-      print(response.token);
+      await _sessionManager.setToken(response.token);
+      _isLoading = false;
+      
+      
       notifyListeners();
+      await Navigator.pushReplacementNamed(context, ProfilePage.routeName);
+
       return true;
     } catch (e) {
       _errorMessage = 'Falha no login. Verifique suas credenciais.';

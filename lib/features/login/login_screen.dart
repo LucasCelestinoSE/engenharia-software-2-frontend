@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/features/login/login_provider.dart';
+import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/features/register/register_page.dart';
 import 'package:testando/features/register/register_screen.dart';
 import 'package:testando/widgets/rounded_button.dart';
@@ -19,7 +20,7 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
         backgroundColor: const Color(0xFFDFD9CB),
-        
+        automaticallyImplyLeading: false,
       ),
        body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -81,9 +82,8 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 44),
             RoundedButton(
               isLoading: loginProvider.isLoading,
-              onPressed: () {
-                loginProvider.login(loginProvider.email, loginProvider.password);
-                print("Login attempt for ${loginProvider.email}");
+              onPressed: () async {
+                loginProvider.login(loginProvider.email, loginProvider.password, context);
               },
               text: 'Entrar',
             ),

@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testando/configs/dio_factory.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
+import 'package:testando/features/main/home_page.dart';
+import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/routes.dart';
 import 'package:testando/session_manager.dart';
 
@@ -13,7 +16,7 @@ void main() {
       providers: [
         // ApiClient provider permanece o mesmo
         Provider<ApiClient>(
-          create: (_) => ApiClient(Dio()),
+          create: (_) => ApiClient(DioFactory.create()),
         ),
         
         // UserRepository provider permanece o mesmo
@@ -45,13 +48,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'Meu App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      initialRoute: context.read<SessionManager>().getToken() != null
+          ? ProfilePage.routeName
+          : "/login", // Verifica se o usuário está logado
       // O arquivo de rotas não precisa mais prover o LoginProvider
       routes: Routes.getAppRoutes(),
     );

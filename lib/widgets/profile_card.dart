@@ -4,19 +4,21 @@ class ProfileCard extends StatelessWidget {
   final String name;
   final int age;
   final String imagePath;
+  final bool isNetworkImage; // Parâmetro para indicar se é uma imagem da web
 
   const ProfileCard({
     Key? key,
     required this.name,
     required this.age,
     required this.imagePath,
+    this.isNetworkImage = false, // Por padrão é falso (imagem local)
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 339, // Largura desejada
-      height: 258, // Altura desejada
+      width: 339,
+      height: 258,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -32,7 +34,9 @@ class ProfileCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage(imagePath),
+                backgroundImage: isNetworkImage 
+                    ? NetworkImage(imagePath) // Use NetworkImage para URLs da internet
+                    : AssetImage(imagePath) as ImageProvider, // Use AssetImage para arquivos locais
               ),
               const SizedBox(height: 10),
               Text(

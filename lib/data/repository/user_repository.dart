@@ -4,12 +4,14 @@ import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
 import 'package:testando/data/api/responses/user_register_response.dart';
+import 'package:testando/data/models/user.dart';
 
 abstract class IUserRepository {
   // Aqui está a interface do repositório de usuário.
   // Ela define os métodos que o repositório deve implementar.
   Future<UserLoginResponse> login(UserLoginRequest request);
   Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest);
+  Future<void> me(String authorization);
   // Você pode adicionar outros métodos relacionados ao usuário aqui, como registro, logout, etc.
 
 }
@@ -43,6 +45,15 @@ Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) a
       return _api.login(request);
     } catch (e) {
       print("login: Erro:" + e.toString());
+      rethrow;
+    }
+  }
+  @override
+  Future<User> me(String authorization) {
+    try {
+      return _api.me(authorization: authorization);
+    } catch (e) {
+      print("me: Erro:" + e.toString());
       rethrow;
     }
   }
