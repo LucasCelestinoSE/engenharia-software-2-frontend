@@ -14,7 +14,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => RegisterProvider(
-        context.read<UserRepository>(),
+        context.read<UserRepository>(), context
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFDFD9CB),

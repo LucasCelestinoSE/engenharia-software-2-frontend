@@ -59,8 +59,8 @@ class RegisterScreen extends StatelessWidget {
                const SizedBox(height: 20),
               TextField(
                 controller: _birthDateController
-                  ..text = registerProvider.date_of_birth ?? '',
-                onChanged: (value) => registerProvider.date_of_birth = value,
+                  ..text = registerProvider.dateOfBirth ?? '',
+                onChanged: (value) => registerProvider.dateOfBirth = value,
                 readOnly: true,
                 onTap: () async {
                   final date = await showDatePicker(

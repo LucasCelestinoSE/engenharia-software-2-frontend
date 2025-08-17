@@ -72,7 +72,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          '/users',
+          '/pessoas',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -107,7 +107,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          '/me',
+          '/pessoas/me',
           queryParameters: queryParameters,
           data: _data,
         )

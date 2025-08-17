@@ -44,7 +44,7 @@ class LoginProvider with ChangeNotifier {
     try {
       _isLoading = true;
       final response = await _userRepository.login(UserLoginRequest(email: email, password: password));
-      await _sessionManager.setToken(response.token);
+      await _sessionManager.setToken(response.accessToken);
       _isLoading = false;
       
       

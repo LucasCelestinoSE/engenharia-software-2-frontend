@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/repository/user_repository.dart';
+import 'package:testando/features/register/widgets/sucess_screen.dart';
 
 class RegisterProvider with ChangeNotifier {
   String name = '';
   String email = '';
   String password = '';
   String confirmPassword = '';
-  String date_of_birth = '';
+  String dateOfBirth = '';
 
   final UserRepository _userRepository;
   bool _isLoading = false;
   String? _errorMessage;
-  
-  RegisterProvider(this._userRepository);
+  BuildContext context;
+  RegisterProvider(this._userRepository, this.context);
 
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
 
    setDateOfBirth(String value) {
-     date_of_birth = value;
+     dateOfBirth = value;
      notifyListeners();
    }
   Future<bool> register() async {
@@ -27,7 +28,8 @@ class RegisterProvider with ChangeNotifier {
       name: name,
       email: email,
       password: password,
-      date_of_birth: date_of_birth,
+      date_of_birth: dateOfBirth
+      
     );
     print(name);
     print(email);
@@ -38,7 +40,7 @@ class RegisterProvider with ChangeNotifier {
       notifyListeners();
 
       await _userRepository.registerUser(user);
-
+      Navigator.pushNamedAndRemoveUntil(context, SucessScreen.routeName, (Route<dynamic> route) => false);
       _isLoading = false;
       notifyListeners();
       return true;

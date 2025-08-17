@@ -14,8 +14,8 @@ abstract class ApiClient {
 
   @POST("/login")
   Future<UserLoginResponse> login(@Body() UserLoginRequest request);
-  @POST("/users")
+  @POST("/pessoas")
   Future<UserRegisterResponse> registerUser(@Body() UserRegisterRequest registerRequest);
-  @GET("/me")
+  @GET("/pessoas/me")
   Future<User> me({@Header("Authorization") String? authorization});
 }

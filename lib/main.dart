@@ -5,8 +5,7 @@ import 'package:testando/configs/dio_factory.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
-import 'package:testando/features/main/home_page.dart';
-import 'package:testando/features/profile/profile_page.dart';
+
 import 'package:testando/routes.dart';
 import 'package:testando/session_manager.dart';
 
@@ -55,9 +54,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: context.read<SessionManager>().getToken() != null
-          ? ProfilePage.routeName
-          : "/login", // Verifica se o usuário está logado
+      initialRoute: "/",
       // O arquivo de rotas não precisa mais prover o LoginProvider
       routes: Routes.getAppRoutes(),
     );

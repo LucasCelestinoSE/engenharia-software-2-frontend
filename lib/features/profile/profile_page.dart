@@ -22,6 +22,7 @@ class ProfilePage extends StatelessWidget {
         builder: (context) => Scaffold(
           backgroundColor: const Color(0xFFDFD9CB),
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             centerTitle: true,
             title: Text("Julho 2025"),
             backgroundColor: const Color(0xFFDFD9CB),
