@@ -58,7 +58,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<UserRegisterResponse> createUser(
+  Future<UserRegisterResponse> registerUser(
       UserRegisterRequest registerRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -72,7 +72,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          '/users',
+          '/pessoas',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -85,6 +85,41 @@ class _ApiClient implements ApiClient {
     late UserRegisterResponse _value;
     try {
       _value = UserRegisterResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<User> me({String? authorization}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<User>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/pessoas/me',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late User _value;
+    try {
+      _value = User.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -1,14 +1,17 @@
+import 'package:dio/dio.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
 import 'package:testando/data/api/responses/user_register_response.dart';
+import 'package:testando/data/models/user.dart';
 
 abstract class IUserRepository {
   // Aqui está a interface do repositório de usuário.
   // Ela define os métodos que o repositório deve implementar.
   Future<UserLoginResponse> login(UserLoginRequest request);
-  Future<UserRegisterResponse> createUser(UserRegisterRequest registerRequest);
+  Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest);
+  Future<void> me(String authorization);
   // Você pode adicionar outros métodos relacionados ao usuário aqui, como registro, logout, etc.
 
 }
@@ -17,25 +20,40 @@ abstract class IUserRepository {
 class UserRepository implements IUserRepository {
   // Aqui você pode implementar a lógica de autenticação, como chamar o ApiClient.
   // Por exemplo, você pode injetar o ApiClient no construtor e usá-lo para fazer login.
-  final ApiClient api;
-  UserRepository({required this.api});
+  final ApiClient _api;
+  UserRepository({required ApiClient api}) : _api = api;
 
   @override
-  Future<UserRegisterResponse> createUser(UserRegisterRequest registerRequest) {
-    try {
-      return api.createUser(registerRequest);
-    } catch (e) {
-      print("Error creating user: ${registerRequest.email}");
-      rethrow;
+Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) async {
+  try {
+    print("Enviando requisição: ${registerRequest.toJson()}");
+    final response = await _api.registerUser(registerRequest);
+    print("Resposta recebida: $response");
+    return response;
+  } catch (e) {
+    print("Erro ao registrar: ${e.toString()}");
+    if (e is DioException) {
+      print("Status code: ${e.response?.statusCode}");
+      print("Resposta: ${e.response?.data}");
     }
+    rethrow;
   }
-
+}
   @override
   Future<UserLoginResponse> login(UserLoginRequest request) {
     try {
-      return api.login(request);
+      return _api.login(request);
     } catch (e) {
-      print("Error logging in user: ${request.email}");
+      print("login: Erro:" + e.toString());
+      rethrow;
+    }
+  }
+  @override
+  Future<User> me(String authorization) {
+    try {
+      return _api.me(authorization: authorization);
+    } catch (e) {
+      print("me: Erro:" + e.toString());
       rethrow;
     }
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:testando/features/login/login_screen.dart';
 import 'package:testando/features/main/home_page.dart';
-import 'package:testando/features/profile/profile_screen.dart';
-import 'package:testando/features/register/register_screen.dart';
-// Remova os imports do provider daqui, não são mais necessários
+import 'package:testando/features/profile/profile_page.dart';
+import 'package:testando/features/register/register_page.dart';
+import 'package:testando/features/register/widgets/sucess_screen.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> getAppRoutes() {
@@ -12,8 +12,9 @@ class Routes {
       // A rota agora simplesmente aponta para a tela.
       // O provider será encontrado no contexto acima dela.
       LoginScreen.routeName: (context) => const LoginScreen(),
-      ProfileScreen.routeName: (context) => const ProfileScreen(),
-      RegisterScreen.routeName: (context) => const RegisterScreen(),
+      ProfilePage.routeName: (context) => const ProfilePage(),
+      RegisterPage.routeName: (context) => const RegisterPage(),
+      SucessScreen.routeName: (context) => const SucessScreen(),
     };
   }
 }

@@ -1,25 +1,38 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testando/configs/dio_factory.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
+
 import 'package:testando/routes.dart';
+import 'package:testando/session_manager.dart';
 
 void main() {
   runApp(
-    // Use MultiProvider para disponibilizar vários serviços/estados
     MultiProvider(
       providers: [
-        // 1. Disponibiliza uma única instância do UserRepository para todo o app
-        Provider<UserRepository>(
-          create: (_) => UserRepository(api: ApiClient(Dio())),
+        // ApiClient provider permanece o mesmo
+        Provider<ApiClient>(
+          create: (_) => ApiClient(DioFactory.create()),
         ),
-        // 2. Cria o LoginProvider, que depende do UserRepository
+        
+        // UserRepository provider permanece o mesmo
+        Provider<UserRepository>(
+          create: (context) => UserRepository(api: context.read<ApiClient>()),
+        ),
+        
+        // Mudando de Provider para ChangeNotifierProvider
+        ChangeNotifierProvider<SessionManager>(
+          create: (context) => SessionManager(context.read<UserRepository>()),
+        ),
+        
+        // LoginProvider permanece o mesmo
         ChangeNotifierProvider<LoginProvider>(
           create: (context) => LoginProvider(
-            // Lê o UserRepository que acabamos de disponibilizar
             context.read<UserRepository>(),
+            context.read<SessionManager>(),
           ),
         ),
       ],
@@ -34,13 +47,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'Meu App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      initialRoute: "/",
       // O arquivo de rotas não precisa mais prover o LoginProvider
       routes: Routes.getAppRoutes(),
     );

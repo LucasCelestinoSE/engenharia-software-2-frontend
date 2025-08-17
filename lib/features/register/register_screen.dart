@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testando/features/login/login_provider.dart';
 import 'package:testando/features/profile/profile_screen.dart';
+import 'package:testando/features/register/register_provider.dart';
 import 'package:testando/widgets/rounded_button.dart';
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
 
-  final String title = 'iMood'; // Título da página
-  static String routeName = '/register';
+class RegisterScreen extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
-    // Obtém o LoginProvider do contexto para acessar os dados de login
-    // Isso permite que a tela de login reaja a mudanças no estado do LoginProvider.
-    final loginProvider = context.watch<LoginProvider>();
-    return Scaffold(
-      backgroundColor: const Color(0xFFDFD9CB),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFDFD9CB),
-        
-      ),
-       body: Padding(
+    final registerProvider = context.watch<RegisterProvider>();
+    final _birthDateController = TextEditingController();
+    return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           // Alinha os itens no topo da tela em vez do centro.
@@ -36,11 +27,13 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             TextField(
+              onChanged: (value) => registerProvider.name = value,
               decoration: InputDecoration(
                 labelText: "Nome",
                 labelStyle: TextStyle(
                   color: Colors.black,
                 ),
+                
                 filled: true,
                 fillColor: Color(0xFF948B80),
                 border: OutlineInputBorder(
@@ -50,6 +43,7 @@ class RegisterScreen extends StatelessWidget {
             ),
               const SizedBox(height: 20),
               TextField(
+                onChanged: (value) => registerProvider.email = value,
                 decoration: InputDecoration(
                   labelText: "E-mail",
                   labelStyle: TextStyle(
@@ -64,6 +58,22 @@ class RegisterScreen extends StatelessWidget {
               ),
                const SizedBox(height: 20),
               TextField(
+                controller: _birthDateController
+                  ..text = registerProvider.dateOfBirth ?? '',
+                onChanged: (value) => registerProvider.dateOfBirth = value,
+                readOnly: true,
+                onTap: () async {
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                  );
+                  if (date != null) {
+                    registerProvider.setDateOfBirth(date.toIso8601String().substring(0, 10));
+                  }
+                },
+                
                 decoration: InputDecoration(
                   labelText: "Data Nascimento",
                   labelStyle: TextStyle(
@@ -78,6 +88,7 @@ class RegisterScreen extends StatelessWidget {
               ),
                const SizedBox(height: 20),
               TextField(
+                onChanged: (value) => registerProvider.password = value,
                 decoration: InputDecoration(
                   labelText: "Senha",
                   labelStyle: TextStyle(
@@ -92,6 +103,7 @@ class RegisterScreen extends StatelessWidget {
               ),
                const SizedBox(height: 20),
               TextField(
+                onChanged: (value) => registerProvider.confirmPassword = value,
                 decoration: InputDecoration(
                   labelText: "Confirmação de Senha",
                   labelStyle: TextStyle(
@@ -106,14 +118,14 @@ class RegisterScreen extends StatelessWidget {
               ),
             const SizedBox(height: 44),
             RoundedButton(
-              onPressed: () =>
-              Navigator.pushReplacementNamed(context, ProfileScreen.routeName),
+              isLoading: registerProvider.isLoading,
+              onPressed: () => registerProvider.register(),
               text: 'Registrar',
             ),
             
           ],
         ),
-      ),
-    );
+      );
   }
+  
 }
