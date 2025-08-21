@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/profile/profile_provider.dart';
@@ -27,7 +28,39 @@ class ProfilePage extends StatelessWidget {
             title: Text("Julho 2025"),
             backgroundColor: const Color(0xFFDFD9CB),
           ),
-          body: ProfileScreen(),
+          body: SingleChildScrollView(
+            child: ProfileScreen(),
+          ),
+          bottomNavigationBar: BottomAppBar(
+            height: 59,
+            color: const Color(0xFF444343),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SvgPicture.asset(
+                  'images/person_icon.svg',
+                  width: 31,
+                  height: 31,
+                ),
+                SvgPicture.asset(
+                  'images/correct_icon.svg',
+                  width: 31,
+                  height: 31,
+                ),
+                SvgPicture.asset(
+                  'images/notification_icon.svg',
+                  width: 31,
+                  height: 31,
+                ),
+                SvgPicture.asset(
+                  'images/hand_icon.svg',
+                  width: 31,
+                  height: 31,
+                ),
+                
+              ],
+            ),
+          ),
         ),
       ),
     );
