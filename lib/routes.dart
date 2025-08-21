@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testando/features/login/login_screen.dart';
-import 'package:testando/features/main/home_page.dart';
+import 'package:testando/features/initial/home_page.dart';
 import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/features/register/register_page.dart';
 import 'package:testando/features/register/widgets/sucess_screen.dart';
