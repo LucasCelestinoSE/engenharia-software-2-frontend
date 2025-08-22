@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/constants/app_fonts.dart';
 import 'package:testando/data/repository/user_repository.dart';
+import 'package:testando/features/checkins/checkin_screen.dart';
 import 'package:testando/features/profile/profile_provider.dart';
 import 'package:testando/session_manager.dart';
 import 'package:testando/widgets/container.dart';
@@ -36,8 +37,13 @@ class ProfileScreen extends StatelessWidget {
               )),
           SizedBox(height: 16),
           MyContainer(),
-          SizedBox(height: 60),
-          Text("Ver Histórico"),
+          SizedBox(height: 16),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, CheckinScreen.routeName);
+            },
+            child: Text("Ver Histórico"),
+          ),
           SizedBox(height: 16),
         ],
       ),
