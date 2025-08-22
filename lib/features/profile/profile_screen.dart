@@ -40,7 +40,12 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(height: 16),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, CheckinScreen.routeName);
+             Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CheckinScreen(context: context),
+                ),
+              );
             },
             child: Text("Ver Histórico"),
           ),

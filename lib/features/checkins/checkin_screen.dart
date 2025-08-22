@@ -5,34 +5,35 @@ import 'package:testando/widgets/emoji_slider.dart';
 import 'package:testando/widgets/rounded_button.dart';
 
 class CheckinScreen extends StatelessWidget {
-  const CheckinScreen({super.key});
+  final BuildContext? context;
+
+  const CheckinScreen({Key? key,  this.context}) : super(key: key);
+
   static String routeName = '/checkin';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 60),
             Text("Como você está se sentindo hoje ?"),
-            SizedBox(height: 20),
             EmojiSlider(),
-            SizedBox(height: 20),
-            
             Text("Quais sentimentos resumem seu dia ?"),
-            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FellingsText(fellingName: "Alegria"),
-                FellingsText(fellingName: "Tristeza"),
-                FellingsText(fellingName: "Angústia"),
-                FellingsText(fellingName: "Raiva"),
-                FellingsText(fellingName: "Ansiedade"),
+                FellingsText(fellingName: "Feliz"),
+                FellingsText(fellingName: "Triste"),
+                FellingsText(fellingName: "Ansioso"),
+                FellingsText(fellingName: "Calmo"),
+                FellingsText(fellingName: "Irritado"),
               ],
             ),
             SizedBox(height: 20),
             Text("Comente um pouco sobre esses sentimentos"),
+            SizedBox(height: 20),
             SizedBox(
               width: 339,
               height: 130,
@@ -49,12 +50,12 @@ class CheckinScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 20),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0), // Espaçamento inferior
+                  padding: const EdgeInsets.only(bottom: 20.0),
                   child: RoundedButton(text: "Registrar Check-in", onPressed: () {}),
                 ),
               ),
