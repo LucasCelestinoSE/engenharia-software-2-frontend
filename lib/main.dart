@@ -5,35 +5,38 @@ import 'package:testando/configs/dio_factory.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
-
 import 'package:testando/routes.dart';
 import 'package:testando/session_manager.dart';
+
+// IMPORT QUE ESTÁ FALTANDO
+import 'package:testando/features/reminder/providers/reminder_provider.dart';
+
+// CORREÇÃO DO ERRO DA NAVIGATOR KEY
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        // ApiClient provider permanece o mesmo
         Provider<ApiClient>(
           create: (_) => ApiClient(DioFactory.create()),
         ),
-        
-        // UserRepository provider permanece o mesmo
         Provider<UserRepository>(
           create: (context) => UserRepository(api: context.read<ApiClient>()),
         ),
-        
-        // Mudando de Provider para ChangeNotifierProvider
         ChangeNotifierProvider<SessionManager>(
           create: (context) => SessionManager(context.read<UserRepository>()),
         ),
-        
-        // LoginProvider permanece o mesmo
         ChangeNotifierProvider<LoginProvider>(
           create: (context) => LoginProvider(
             context.read<UserRepository>(),
             context.read<SessionManager>(),
           ),
+        ),
+        
+        // provider lembrete
+        ChangeNotifierProvider<ReminderProvider>(
+          create: (context) => ReminderProvider(),
         ),
       ],
       child: const MyApp(),
@@ -55,7 +58,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: "/",
-      // O arquivo de rotas não precisa mais prover o LoginProvider
       routes: Routes.getAppRoutes(),
     );
   }
