@@ -5,6 +5,7 @@ import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/profile/profile_provider.dart';
 import 'package:testando/features/profile/profile_screen.dart';
 import 'package:testando/session_manager.dart';
+import 'package:testando/widgets/bottom_bar_main.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -31,36 +32,7 @@ class ProfilePage extends StatelessWidget {
           body: SingleChildScrollView(
             child: ProfileScreen(),
           ),
-          bottomNavigationBar: BottomAppBar(
-            height: 59,
-            color: const Color(0xFF444343),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SvgPicture.asset(
-                  'images/person_icon.svg',
-                  width: 31,
-                  height: 31,
-                ),
-                SvgPicture.asset(
-                  'images/correct_icon.svg',
-                  width: 31,
-                  height: 31,
-                ),
-                SvgPicture.asset(
-                  'images/notification_icon.svg',
-                  width: 31,
-                  height: 31,
-                ),
-                SvgPicture.asset(
-                  'images/hand_icon.svg',
-                  width: 31,
-                  height: 31,
-                ),
-                
-              ],
-            ),
-          ),
+          bottomNavigationBar: BottomBarMain(),
         ),
       ),
     );
