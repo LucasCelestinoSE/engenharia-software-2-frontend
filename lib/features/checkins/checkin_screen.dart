@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testando/features/checkins/widgets/fellings_text.dart';
+    import 'package:testando/features/checkins/widgets/fellings_text.dart';
 import 'package:testando/widgets/bottom_bar_main.dart';
 import 'package:testando/widgets/emoji_slider.dart';
 import 'package:testando/widgets/rounded_button.dart';
@@ -33,7 +33,7 @@ class CheckinScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text("Comente um pouco sobre esses sentimentos"),
-            SizedBox(height: 20),
+            SizedBox(height: 60),
             SizedBox(
               width: 339,
               height: 130,

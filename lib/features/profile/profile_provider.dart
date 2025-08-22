@@ -23,7 +23,7 @@ class ProfileProvider extends ChangeNotifier {
       
       String token = await sessionManager.getToken() ?? "";
       final userData = await _userRepository.me(token);
-      
+      await sessionManager.setUserId(userData.id);
       if (userData != null) {
         user = userData.name;
         print("Usuário carregado: ${userData.name}");
