@@ -58,17 +58,21 @@ class CheckinProvider with ChangeNotifier {
       if(userId == null || token == null){
         throw Exception('Usuário não está logado ou dados de sessão inválidos');
       }
+      // Remove vírgulas desnecessárias
+    String checkinType = _selectedFeelings.isNotEmpty 
+        ? _selectedFeelings.join(',').replaceAll(RegExp(r',+$'), '') // Remove vírgulas no final
+        : '';
       final request = CheckInRequest(
         score: _selectedEmoji.toString(),
-        checkin_type: _selectedFeelings.join(','),
-        comment: _comment,
+        checkin_type: checkinType,
+        comment: _comment.trim(),
       );
-
+      debug();
       // Aqui você faria a chamada para a API
       await _userRepository.createCheckin(token, userId, request);
 
       _isLoading = false;
-      debug();
+      
       notifyListeners();
       return true;
     } catch (e) {
@@ -78,4 +82,15 @@ class CheckinProvider with ChangeNotifier {
       return false;
     }
   }
+  void selectSingleFeeling(String feeling) {
+  if (_selectedFeelings.contains(feeling)) {
+    // Se clicou no mesmo que já estava selecionado, remove
+    _selectedFeelings.clear();
+  } else {
+    // Substitui a seleção atual
+    _selectedFeelings.clear();
+    _selectedFeelings.add(feeling);
+  }
+  notifyListeners();
+}
 }
