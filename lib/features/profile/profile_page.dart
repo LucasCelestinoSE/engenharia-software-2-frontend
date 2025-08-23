@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   final String title = 'iMood'; // Título da página
-  static String routeName = '/user_profile';
+  static const String routeName = '/user_profile';
   
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ProfilePage extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             centerTitle: true,
-            title: Text("Julho 2025"),
+            title: Text("Perfil"),
             backgroundColor: const Color(0xFFDFD9CB),
           ),
           body: SingleChildScrollView(

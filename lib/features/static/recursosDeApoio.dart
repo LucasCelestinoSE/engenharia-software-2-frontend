@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testando/features/static/artigos.dart';
 import 'package:testando/features/static/respiracao.dart';
+import 'package:testando/widgets/bottom_bar_main.dart';
 
 class RecursoTelefone {
   final String nome;
@@ -11,6 +12,7 @@ class RecursoTelefone {
 
 class RecursosDeApoioScreen extends StatefulWidget {
   const RecursosDeApoioScreen({Key? key}) : super(key: key);
+  static const String routeName = '/recursosDeApoio';
 
   @override
   State<RecursosDeApoioScreen> createState() => _RecursosDeApoioScreenState();
@@ -162,6 +164,7 @@ class _RecursosDeApoioScreenState extends State<RecursosDeApoioScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomBarMain(),
     );
   }
 }

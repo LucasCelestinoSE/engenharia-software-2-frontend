@@ -15,7 +15,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
-        toolbarHeight: 140,
+        toolbarHeight: 120,
         centerTitle: true,
         backgroundColor: const Color(0xFFDFD9CB),
         title: Column(
@@ -23,14 +23,14 @@ class MyHomePage extends StatelessWidget {
           children: [
             Image(
               image: AssetImage('images/header.png'),
-              width: 94,
-              height: 99,
+              width: 80,
+              height: 80,
             ),
             Text(title),
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
@@ -39,17 +39,18 @@ class MyHomePage extends StatelessWidget {
               Image.asset('images/inital_image.png'),
               const SizedBox(height: 16),
               Text(
-                'Bem-vindo ao $title',
+                'Bem-vindo ao $title!',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 22,
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 textAlign: TextAlign.center,
-                'Estamos aqui para ajudar você a mapear seu estado emocional e ola',
+                'Estamos aqui para ajudar você a mapear seu estado emocional',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   color: Colors.black,
                 ),
               ),
@@ -69,25 +70,6 @@ class MyHomePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.black,
-                      )),
-                ),
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: 350,
-                height: 50,
-                child: ElevatedButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.grey[600],
-                    foregroundColor: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, ReminderListPage.routeName);
-                  },
-                  child: Text('Testar Lembretes',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.white,
                       )),
                 ),
               ),

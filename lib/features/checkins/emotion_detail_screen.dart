@@ -42,8 +42,6 @@ class EmotionDetailScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
-            
-            // AQUI COMEÇA A MÁGICA
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
@@ -57,7 +55,6 @@ class EmotionDetailScreen extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
-                      // O TEXTO AGORA ESTÁ DENTRO DE UM SingleChildScrollView
                       child: SingleChildScrollView(
                         child: Text(
                           entry.description,

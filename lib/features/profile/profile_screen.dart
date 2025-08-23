@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
           ProfileCard(
             name: profileProvider.user,
             age: 25,
-            imagePath: "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+            imagePath: "/assets/images/foto_perfil.png",
             isNetworkImage: true,
           ),
           Text("Visão semanal do Humor",
@@ -44,19 +44,6 @@ class ProfileScreen extends StatelessWidget {
              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CheckinScreen(context: context),
-                ),
-              );
-            },
-            child: Text("Fazer checkin"),
-          ),
-          SizedBox(height: 16),
-          GestureDetector(
-            onTap: () {
-             // AÇÃO DE NAVEGAÇÃO FOI ATUALIZADA AQUI
-             Navigator.push(
-                context,
-                MaterialPageRoute(
                   builder: (context) => const HistoryScreen(),
                 ),
               );
@@ -66,11 +53,11 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline, // Adiciona um sublinhado para parecer clicável
+                decoration: TextDecoration.underline,
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
         ],
       ),
     );

@@ -9,7 +9,7 @@ class CheckinScreen extends StatelessWidget {
 
   const CheckinScreen({Key? key,  this.context}) : super(key: key);
 
-  static String routeName = '/checkin';
+  static const String routeName = '/checkin';
 
   @override
   Widget build(BuildContext context) {

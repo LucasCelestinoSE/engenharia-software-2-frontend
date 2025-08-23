@@ -50,12 +50,11 @@ class HistoryScreen extends StatelessWidget {
           return _HistoryCard(entry: entry);
         },
       ),
-       bottomNavigationBar: BottomBarMain(), // Reutilizando seu bottom bar
+       bottomNavigationBar: BottomBarMain(),
     );
   }
 }
 
-// Widget para cada item da lista, para manter o código organizado
 class _HistoryCard extends StatelessWidget {
   final EmotionEntry entry;
 
@@ -65,7 +64,6 @@ class _HistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navegação para a tela de detalhes ao tocar no card
         Navigator.push(
           context,
           MaterialPageRoute(

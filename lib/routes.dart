@@ -5,9 +5,11 @@ import 'package:testando/features/initial/home_page.dart';
 import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/features/register/register_page.dart';
 import 'package:testando/features/register/widgets/sucess_screen.dart';
-// Importe as novas páginas
 import 'package:testando/features/reminder/pages/add_reminder_page.dart';
+// Importe as novas páginas
+// import 'package:testando/features/reminder/pages/add_reminder_page.dart';
 import 'package:testando/features/reminder/pages/reminder_list_page.dart';
+import "package:testando/features/static/recursosDeApoio.dart";
 
 
 class Routes {
@@ -19,6 +21,9 @@ class Routes {
       RegisterPage.routeName: (context) => const RegisterPage(),
       SucessScreen.routeName: (context) => const SucessScreen(),
       CheckinScreen.routeName: (context) => const CheckinScreen(),
+      ReminderListPage.routeName: (context) => const ReminderListPage(),
+      AddReminderPage.routeName: (context) => const AddReminderPage(),
+      RecursosDeApoioScreen.routeName: (context) => const RecursosDeApoioScreen(),
     };
   }
 }
