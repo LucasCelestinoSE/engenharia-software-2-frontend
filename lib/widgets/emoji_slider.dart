@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EmojiSlider extends StatefulWidget {
-  const EmojiSlider({super.key});
+  final Function(int)? onValueChanged; // Callback para retornar o valor
+
+  const EmojiSlider({super.key, this.onValueChanged});
 
   @override
   _EmojiSliderState createState() => _EmojiSliderState();
@@ -10,7 +12,7 @@ class EmojiSlider extends StatefulWidget {
 
 class _EmojiSliderState extends State<EmojiSlider> {
   // O valor inicial do slider, de 1 a 5
-  double _currentValue = 1;
+  double currentValue = 1;
 
   // Lista de emojis e seus paths SVG
   final List<String> _emojis = [
@@ -28,7 +30,7 @@ class _EmojiSliderState extends State<EmojiSlider> {
       children: [
         // O Slider
         Slider(
-          value: _currentValue,
+          value: currentValue,
           min: 1,
           max: 5,
           divisions: 4, // 5 posições no total (1, 2, 3, 4, 5)
@@ -37,8 +39,12 @@ class _EmojiSliderState extends State<EmojiSlider> {
           thumbColor: Colors.white, // Cor do "polegar"
           onChanged: (double newValue) {
             setState(() {
-              _currentValue = newValue;
+              currentValue = newValue;
             });
+            // Chama o callback quando o valor muda
+            if (widget.onValueChanged != null) {
+              widget.onValueChanged!(newValue.round());
+            }
           },
         ),
         
@@ -52,14 +58,18 @@ class _EmojiSliderState extends State<EmojiSlider> {
 
             // Define a opacidade
             final double opacity =
-                (index + 1) == _currentValue.round() ? 1.0 : 0.4;
+                (index + 1) == currentValue.round() ? 1.0 : 0.4;
 
             // Cria o círculo com o emoji dentro
             return GestureDetector(
               onTap: () {
                 setState(() {
-                  _currentValue = (index + 1).toDouble();
+                  currentValue = (index + 1).toDouble();
                 });
+                // Chama o callback quando o emoji é tocado
+                if (widget.onValueChanged != null) {
+                  widget.onValueChanged!(index + 1);
+                }
               },
               child: AnimatedOpacity(
                 opacity: opacity,

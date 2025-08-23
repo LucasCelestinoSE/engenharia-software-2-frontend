@@ -129,12 +129,15 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<CheckinResponse> createCheckIn(
+    String? authorization,
     int userId,
     CheckInRequest request,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _options = _setStreamType<CheckinResponse>(Options(

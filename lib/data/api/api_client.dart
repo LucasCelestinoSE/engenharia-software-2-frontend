@@ -21,5 +21,5 @@ abstract class ApiClient {
   @GET("/pessoas/me")
   Future<User> me({@Header("Authorization") String? authorization});
   @POST("/pessoas/{id}/check_ins")
-  Future<CheckinResponse> createCheckIn(@Path("id") int userId, @Body() CheckInRequest request);
+  Future<CheckinResponse> createCheckIn(@Header("Authorization") String? authorization, @Path("id") int userId, @Body() CheckInRequest request);
 }

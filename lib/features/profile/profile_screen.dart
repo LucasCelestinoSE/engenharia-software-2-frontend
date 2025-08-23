@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CheckinScreen(context: context),
+                  builder: (context) => CheckinScreen(),
                 ),
               );
             },
