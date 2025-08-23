@@ -30,6 +30,7 @@ class SessionManager extends ChangeNotifier implements ISessionManager {
 
     static const String _keyToken = 'token';
     static const String _keyUser = 'user';
+    static const String _keyUserId = 'user_id';
     SessionManager(UserRepository userRepository);
     
     @override
@@ -70,10 +71,12 @@ class SessionManager extends ChangeNotifier implements ISessionManager {
     return prefs.remove(_keyUser);
   }
   
-  void testeLocalStorage() async {
+  Future<bool> setUserId(int userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('teste', 'teste');
-    String? teste = prefs.getString('teste');
-    print(teste); 
+    return prefs.setInt(_keyUserId, userId);
+  }
+  Future<int?> getUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_keyUserId);
   }
 }

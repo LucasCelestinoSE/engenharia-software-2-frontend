@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testando/widgets/graphical.dart';
 
 class MyContainer extends StatelessWidget {
   const MyContainer({Key? key}) : super(key: key);
@@ -7,22 +8,15 @@ class MyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 339,
-      height: 153,
+      height: 204,
       decoration: BoxDecoration(
         color: const Color(0xFFB6B1A6), // Cor de fundo do container
         borderRadius: BorderRadius.circular(20), // Aumentei o raio da borda para 20
       ),
-      child: const Center(
-        child: Text(
-          "O gráfico aqui",
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center, // Garante que o texto fique centralizado
+      child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          child: GraphicalWidget(),
         ),
-      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/configs/dio_factory.dart';
+import 'package:testando/constants/app_theme.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
@@ -50,10 +51,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       title: 'Meu App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       initialRoute: "/",
       // O arquivo de rotas não precisa mais prover o LoginProvider
       routes: Routes.getAppRoutes(),

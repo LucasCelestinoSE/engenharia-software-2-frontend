@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testando/features/checkins/checkin_screen.dart';
 import 'package:testando/features/login/login_screen.dart';
 import 'package:testando/features/initial/home_page.dart';
 import 'package:testando/features/profile/profile_page.dart';
@@ -15,6 +16,7 @@ class Routes {
       ProfilePage.routeName: (context) => const ProfilePage(),
       RegisterPage.routeName: (context) => const RegisterPage(),
       SucessScreen.routeName: (context) => const SucessScreen(),
+      CheckinScreen.routeName: (context) => const CheckinScreen(),
     };
   }
 }
