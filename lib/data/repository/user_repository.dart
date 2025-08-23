@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:testando/data/api/api_client.dart';
+import 'package:testando/data/api/requests/checkins/checkin_request.dart';
+import 'package:testando/data/api/requests/checkins/checkin_response.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
@@ -12,6 +14,7 @@ abstract class IUserRepository {
   Future<UserLoginResponse> login(UserLoginRequest request);
   Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest);
   Future<void> me(String authorization);
+  Future<CheckinResponse> createCheckin(int sessionUserid, CheckInRequest request);
   // Você pode adicionar outros métodos relacionados ao usuário aqui, como registro, logout, etc.
 
 }
@@ -56,5 +59,14 @@ Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) a
       print("me: Erro:" + e.toString());
       rethrow;
     }
+  }
+  @override
+  Future<CheckinResponse> createCheckin(int sessionUserid, CheckInRequest request) async {
+  try {
+    return await _api.createCheckIn(sessionUserid, request);
+  } catch (e) {
+    print("createCheckin: Erro:" + e.toString());
+    rethrow;
+  }
   }
 }

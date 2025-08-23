@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testando/constants/app_fonts.dart';
 import 'package:testando/data/repository/user_repository.dart';
+import 'package:testando/features/checkins/checkin_screen.dart';
 import 'package:testando/features/profile/profile_provider.dart';
 import 'package:testando/session_manager.dart';
 import 'package:testando/widgets/container.dart';
+import 'package:testando/widgets/graphical.dart';
 import 'package:testando/widgets/profile_card.dart';
+import 'package:testando/features/checkins/history_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -25,19 +29,48 @@ class ProfileScreen extends StatelessWidget {
             imagePath: "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
             isNetworkImage: true,
           ),
-          Text("Visão geral do Humor"),
+          Text("Visão semanal do Humor",
+              style: TextStyle(
+                fontFamily: AppFonts.epilogue,
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              )),
           SizedBox(height: 16),
           MyContainer(),
-          SizedBox(height: 60),
-          Text("Termos de uso e Política de Privacidade"),
-          ElevatedButton(
-            onPressed: () {
-              // Use context.read quando você só precisa chamar uma função
-              // e não precisa reconstruir o widget quando o estado mudar
-              context.read<ProfileProvider>().teste();
+          SizedBox(height: 16),
+          GestureDetector(
+            onTap: () {
+             Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CheckinScreen(context: context),
+                ),
+              );
             },
-            child: Text("Fazer algo"),
-          )
+            child: Text("Fazer checkin"),
+          ),
+          SizedBox(height: 16),
+          GestureDetector(
+            onTap: () {
+             // AÇÃO DE NAVEGAÇÃO FOI ATUALIZADA AQUI
+             Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HistoryScreen(),
+                ),
+              );
+            },
+            child: const Text(
+              "Ver Histórico",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline, // Adiciona um sublinhado para parecer clicável
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
         ],
       ),
     );

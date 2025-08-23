@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/configs/dio_factory.dart';
+import 'package:testando/constants/app_theme.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/repository/user_repository.dart';
 import 'package:testando/features/login/login_provider.dart';
 import 'package:testando/routes.dart';
 import 'package:testando/session_manager.dart';
 
-// IMPORT QUE ESTÁ FALTANDO
 import 'package:testando/features/reminder/providers/reminder_provider.dart';
 
 // CORREÇÃO DO ERRO DA NAVIGATOR KEY
@@ -53,10 +53,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       title: 'Meu App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       initialRoute: "/",
       routes: Routes.getAppRoutes(),
     );

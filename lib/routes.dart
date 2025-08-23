@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:testando/features/checkins/checkin_screen.dart';
 import 'package:testando/features/login/login_screen.dart';
-import 'package:testando/features/main/home_page.dart';
+import 'package:testando/features/initial/home_page.dart';
 import 'package:testando/features/profile/profile_page.dart';
 import 'package:testando/features/register/register_page.dart';
 import 'package:testando/features/register/widgets/sucess_screen.dart';
@@ -17,9 +18,7 @@ class Routes {
       ProfilePage.routeName: (context) => const ProfilePage(),
       RegisterPage.routeName: (context) => const RegisterPage(),
       SucessScreen.routeName: (context) => const SucessScreen(),
-      // Adicione as novas rotas aqui
-      ReminderListPage.routeName: (context) => const ReminderListPage(),
-      AddReminderPage.routeName: (context) => const AddReminderPage(),
+      CheckinScreen.routeName: (context) => const CheckinScreen(),
     };
   }
 }

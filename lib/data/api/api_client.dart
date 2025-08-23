@@ -1,5 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:testando/data/api/requests/checkins/checkin_request.dart';
+import 'package:testando/data/api/requests/checkins/checkin_response.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
@@ -18,4 +20,6 @@ abstract class ApiClient {
   Future<UserRegisterResponse> registerUser(@Body() UserRegisterRequest registerRequest);
   @GET("/pessoas/me")
   Future<User> me({@Header("Authorization") String? authorization});
+  @POST("/pessoas/{id}/check_ins")
+  Future<CheckinResponse> createCheckIn(@Path("id") int userId, @Body() CheckInRequest request);
 }
