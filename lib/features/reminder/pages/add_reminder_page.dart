@@ -36,7 +36,9 @@ class _AddReminderPageState extends State<AddReminderPage> {
     );
 
     context.read<ReminderProvider>().addReminder(novoLembrete);
+    context.read<ReminderProvider>().getReminderList();
     Navigator.of(context).pop();
+
   }
 
   @override

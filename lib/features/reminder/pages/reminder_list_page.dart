@@ -3,13 +3,26 @@ import 'package:provider/provider.dart';
 import 'package:testando/features/reminder/pages/add_reminder_page.dart';
 import 'package:testando/features/reminder/providers/reminder_provider.dart';
 
-class ReminderListPage extends StatelessWidget {
+class ReminderListPage extends StatefulWidget { // Mudança aqui
   static const String routeName = '/reminders';
 
   const ReminderListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ReminderListPage> createState() => _ReminderListPageState(); // Adicione esta linha
+}
+
+class _ReminderListPageState extends State<ReminderListPage> { // Crie esta nova classe
+  @override
+  void initState() { // Aqui vai o initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ReminderProvider>().getReminderList(); // ou .init() se você criou esse método
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) { // Mova todo o código do build para cá
     final reminderProvider = context.watch<ReminderProvider>();
     final bgColor = const Color(0xFFDFD9CB);
 
@@ -24,50 +37,26 @@ class ReminderListPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 18, right: 18, bottom: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Lembrete',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.w700,
-                fontSize: 26,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8),
+        child: Consumer<ReminderProvider>(
+          builder: (context, reminderProvider, child) {
+            if (reminderProvider.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (reminderProvider.reminders.isEmpty) {
+              return const Center(
+                child: Text(
+                  'Nenhum lembrete cadastrado.',
+                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                ),
+              );
+            } else {
+              return ListView.separated(
                 itemCount: reminderProvider.reminders.length,
                 separatorBuilder: (_, __) => const SizedBox(height: 16),
                 itemBuilder: (context, index) {
                   final reminder = reminderProvider.reminders[index];
                   return GestureDetector(
-                    onLongPress: () {
-                      // Excluir lembrete ao segurar
-                      showDialog(
-                        context: context,
-                        builder: (ctx) => AlertDialog(
-                          title: const Text('Excluir lembrete?'),
-                          content: const Text('Deseja remover este lembrete?'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.of(ctx).pop(),
-                              child: const Text('Cancelar'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                reminderProvider.removeReminderAt(index);
-                                Navigator.of(ctx).pop();
-                              },
-                              child: const Text('Excluir', style: TextStyle(color: Colors.red)),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                    // resto do código do item...
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -100,9 +89,9 @@ class ReminderListPage extends StatelessWidget {
                     ),
                   );
                 },
-              ),
-            ),
-          ],
+              );
+            }
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -2,19 +2,24 @@ import 'package:dio/dio.dart';
 import 'package:testando/data/api/api_client.dart';
 import 'package:testando/data/api/requests/checkins/checkin_request.dart';
 import 'package:testando/data/api/requests/checkins/checkin_response.dart';
+import 'package:testando/data/api/requests/reminder_request.dart';
+import 'package:testando/data/api/requests/reminder_response.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
 import 'package:testando/data/api/responses/user_register_response.dart';
 import 'package:testando/data/models/user.dart';
+import 'package:testando/data/api/responses/get_reminder_response.dart';
 
 abstract class IUserRepository {
   // Aqui está a interface do repositório de usuário.
   // Ela define os métodos que o repositório deve implementar.
   Future<UserLoginResponse> login(UserLoginRequest request);
   Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest);
-  Future<void> me(String authorization);
-  Future<CheckinResponse> createCheckin(String authorization, int sessionUserid, CheckInRequest request);
+    Future<void> me(String authorization);
+    Future<CheckinResponse> createCheckin(String authorization, int sessionUserid, CheckInRequest request);
+    Future<ReminderResponse> createReminder(String authorization, int userId, ReminderRequest request);
+    Future<List<GetReminderResponse>> getReminder(String authorization, int userId);
   // Você pode adicionar outros métodos relacionados ao usuário aqui, como registro, logout, etc.
 
 }
@@ -40,8 +45,8 @@ Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) a
       print("Resposta: ${e.response?.data}");
     }
     rethrow;
+    }
   }
-}
   @override
   Future<UserLoginResponse> login(UserLoginRequest request) {
     try {
@@ -69,4 +74,22 @@ Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) a
     rethrow;
   }
   }
+  @override
+  Future<ReminderResponse> createReminder(String authorization, int userId, ReminderRequest request) async {
+  try {
+    return await _api.createReminder(authorization, userId, request);
+  } catch (e) {
+    print("createReminder: Erro:" + e.toString());
+    rethrow;
+    }
+  }
+  @override
+  Future<List<GetReminderResponse>> getReminder(String authorization, int userId) async {
+  try {
+    return await _api.getReminder(authorization, userId);
+  } catch (e) {
+    print("getReminder: Erro:" + e.toString());
+    rethrow;
+  }
+}
 }
