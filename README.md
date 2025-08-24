@@ -1,10 +1,23 @@
-# testando
+===============================================
+    PROJETO IMOOD - ENGENHARIA DE SOFTWARE
+===============================================
 
-A new Flutter project.
+Para visualizar o frontend do projeto, siga os passos abaixo:
 
+1.  **Execute o arquivo "EXECUTAR_PROJETO.bat"** com um duplo clique.
 
-# engenharia-software-2-frontend
-Esse projeto foi feito para o frontend de um aplicativo de controle emocional e ansiedade, para pacientes com depressão. É um projeto da disciplina de engenharia de software.
+2.  O script irá verificar se o Python está instalado e, em seguida, iniciará um servidor local.
 
-# Para rodar a API
-flutter pub run build_runner build --delete-conflicting-outputs
+3.  O projeto será aberto automaticamente no seu navegador padrão no endereço: http://localhost:8080
+
+4. Atenção ! Para o frontend estar funcionando perfeitamente, é necessário que a API esteja ligada ! 
+
+REQUISITOS:
+-   Windows
+-   Python 3.x instalado e adicionado ao PATH do sistema.
+    (O script avisará caso o Python não seja encontrado).
+
+PARA PARAR O SERVIDOR:
+-   Basta fechar a janela do terminal (preta) que foi aberta.
+
+Obrigado!
