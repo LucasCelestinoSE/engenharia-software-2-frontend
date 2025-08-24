@@ -1,7 +1,5 @@
-===============================================
-    PROJETO IMOOD - ENGENHARIA DE SOFTWARE
-===============================================
 
+  #  PROJETO IMOOD - ENGENHARIA DE SOFTWARE
 Para visualizar o frontend do projeto, siga os passos abaixo:
 
 1.  **Execute o arquivo "EXECUTAR_PROJETO.bat"** com um duplo clique.
