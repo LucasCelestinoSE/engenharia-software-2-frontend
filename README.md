@@ -10,7 +10,7 @@ Para visualizar o frontend do projeto, siga os passos abaixo:
 
 4. Atenção ! Para o frontend estar funcionando perfeitamente, é necessário que a API esteja ligada ! 
 
-RECOMENDAÇÕES:
+#RECOMENDAÇÕES:
 ![alt text](responsive_mode.png)
 
 
