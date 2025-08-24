@@ -4,7 +4,7 @@ Este é o frontend para o aplicativo de mapeamento emocional **iMood**, desenvol
 
 ---
 
-## 🚀 Como Executar o Projeto
+##  Como Executar o Projeto
 
 Existem duas maneiras de visualizar o projeto: uma simplificada (sem precisar do Flutter) e outra completa (para desenvolvedores com o Flutter instalado).
 
@@ -30,7 +30,7 @@ Este método é para desenvolvedores que desejam rodar o projeto no ambiente de 
 
 ---
 
-## 💡 Recomendações de Visualização
+##  Recomendações de Visualização
 
 Para uma melhor experiência, especialmente ao rodar no navegador, ative o **modo de design responsivo** (geralmente pressionando `F12` ou `Ctrl+Shift+I` e clicando no ícone de celular/tablet) para simular a visão de um aplicativo mobile.
 
@@ -38,7 +38,7 @@ Para uma melhor experiência, especialmente ao rodar no navegador, ative o **mod
 
 ---
 
-## ✅ Requisitos
+##  Requisitos
 
 *   **API do Backend:** O servidor do backend **precisa estar rodando** para que o frontend funcione corretamente, pois muitas funcionalidades dependem de chamadas à API.
 *   **Windows:** Para executar os scripts `.bat`.
@@ -47,7 +47,7 @@ Para uma melhor experiência, especialmente ao rodar no navegador, ative o **mod
 
 ---
 
-## 🛑 Como Parar a Execução
+##  Como Parar a Execução
 
 *   **Método 1 (Servidor .bat):** Basta fechar a janela do terminal (preta) que foi aberta.
 *   **Método 2 (Flutter Run):** No terminal onde o Flutter está rodando, pressione a tecla `q` para encerrar
