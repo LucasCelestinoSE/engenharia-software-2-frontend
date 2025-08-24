@@ -11,13 +11,13 @@ Para visualizar o frontend do projeto, siga os passos abaixo:
 4. Atenção ! Para o frontend estar funcionando perfeitamente, é necessário que a API esteja ligada ! 
 
 # RECOMENDAÇÕES:
-![alt text](responsive_mode.png)
+![alt text](responsive_mode.png)  
+Ative a opção de Design Responsive para ter a visão do " Aplicativo "
 
 
-REQUISITOS:
+# REQUISITOS:
 -   Windows
 -   Python 3.x instalado e adicionado ao PATH do sistema.
-    (O script avisará caso o Python não seja encontrado).
-
-PARA PARAR O SERVIDOR:
+    (O script avisará caso o Python não seja encontrado).  
+-   O servidor precisa está ligado para o app funcionar perfeitamnete, para poder acessar certas rotas é necessário fazer usos e chamadas via API.
 -   Basta fechar a janela do terminal (preta) que foi aberta.
