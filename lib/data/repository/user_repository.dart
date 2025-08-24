@@ -20,6 +20,7 @@ abstract class IUserRepository {
     Future<CheckinResponse> createCheckin(String authorization, int sessionUserid, CheckInRequest request);
     Future<ReminderResponse> createReminder(String authorization, int userId, ReminderRequest request);
     Future<List<GetReminderResponse>> getReminder(String authorization, int userId);
+    Future<List<CheckinResponse>> getCheckIns(String authorization, int userId);
   // Você pode adicionar outros métodos relacionados ao usuário aqui, como registro, logout, etc.
 
 }
@@ -92,4 +93,13 @@ Future<UserRegisterResponse> registerUser(UserRegisterRequest registerRequest) a
     rethrow;
   }
 }
+@override
+Future<List<CheckinResponse>> getCheckIns(String authorization, int userId) async {
+  try {
+    return await _api.getCheckIns(authorization, userId);
+  } catch (e) {
+    print("getCheckIns: Erro:" + e.toString());
+    rethrow;
+  }
+  }
 }

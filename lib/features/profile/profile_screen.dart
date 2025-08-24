@@ -8,7 +8,7 @@ import 'package:testando/session_manager.dart';
 import 'package:testando/widgets/container.dart';
 import 'package:testando/widgets/graphical.dart';
 import 'package:testando/widgets/profile_card.dart';
-import 'package:testando/features/checkins/history_screen.dart';
+import 'package:testando/features/checkins/history/history_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const HistoryScreen(),
+                  builder: (context) => HistoryScreen(profileProvider: profileProvider),
                 ),
               );
             },

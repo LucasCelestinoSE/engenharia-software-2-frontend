@@ -25,6 +25,8 @@ abstract class ApiClient {
   Future<User> me({@Header("Authorization") String? authorization});
   @POST("/pessoas/{id}/check_ins")
   Future<CheckinResponse> createCheckIn(@Header("Authorization") String? authorization, @Path("id") int userId, @Body() CheckInRequest request);
+  @GET("/pessoas/{id}/check_ins")
+  Future<List<CheckinResponse>> getCheckIns(@Header("Authorization") String? authorization, @Path("id") int userId);
   @POST("/pessoas/{id}/lembretes")
   Future<ReminderResponse> createReminder(@Header("Authorization") String? authorization, @Path("id") int userId, @Body() ReminderRequest request);
   @GET("/pessoas/{id}/lembretes")

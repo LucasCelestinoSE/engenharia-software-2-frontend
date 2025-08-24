@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:testando/features/checkins/models/emotion_entry.dart';
+import 'package:testando/data/api/requests/checkins/checkin_response.dart';
+import 'package:testando/utils/custom_date_converter.dart';
 
 class EmotionDetailScreen extends StatelessWidget {
-  final EmotionEntry entry;
+  final CheckinResponse entry;
 
   const EmotionDetailScreen({super.key, required this.entry});
 
@@ -23,7 +24,7 @@ class EmotionDetailScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 16),
             Text(
-              DateFormat('dd/MM/yyyy').format(entry.date),
+              formatCreatedAt(entry.createdAt),
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -33,7 +34,7 @@ class EmotionDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              entry.emotion,
+              entry.checkinType.toString(),
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class EmotionDetailScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(24.0),
                       child: SingleChildScrollView(
                         child: Text(
-                          entry.description,
+                          entry.comment,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 16,

@@ -84,16 +84,16 @@ class BottomBarMain extends StatelessWidget {
 
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, ProfilePage.routeName);
+        Navigator.pushNamed(context, ProfilePage.routeName);
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, CheckinScreen.routeName);
+        Navigator.pushNamed(context, CheckinScreen.routeName);
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, ReminderListPage.routeName);
+        Navigator.pushNamed(context, ReminderListPage.routeName);
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, RecursosDeApoioScreen.routeName);
+        Navigator.pushNamed(context, RecursosDeApoioScreen.routeName);
         break;
     }
   }
