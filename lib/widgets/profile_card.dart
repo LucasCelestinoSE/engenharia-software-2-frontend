@@ -18,7 +18,7 @@ class ProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 339,
-      height: 258,
+      // height: 258,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -41,6 +41,7 @@ class ProfileCard extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 name,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

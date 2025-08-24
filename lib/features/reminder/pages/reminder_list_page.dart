@@ -11,7 +11,7 @@ class ReminderListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final reminderProvider = context.watch<ReminderProvider>();
-    final bgColor = const Color(0xFFD9CFC2);
+    final bgColor = const Color(0xFFDFD9CB);
 
     return Scaffold(
       backgroundColor: bgColor,

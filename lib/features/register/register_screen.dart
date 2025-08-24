@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:provider/provider.dart';
 import 'package:testando/features/profile/profile_screen.dart';
 import 'package:testando/features/register/register_provider.dart';
 import 'package:testando/widgets/rounded_button.dart';
+import 'package:testando/features/static/termoDeUso.dart'; 
 
-class RegisterScreen extends StatelessWidget {
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   
+   bool _aceitouTermos = false;
+
   @override
   Widget build(BuildContext context) {
     final registerProvider = context.watch<RegisterProvider>();
@@ -13,7 +25,6 @@ class RegisterScreen extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
-          // Alinha os itens no topo da tela em vez do centro.
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Center(
@@ -22,6 +33,7 @@ class RegisterScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -116,13 +128,54 @@ class RegisterScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 ),
               ),
+            
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Checkbox(
+                  value: _aceitouTermos,
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      _aceitouTermos = newValue ?? false;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                ),
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      style: const TextStyle(color: Colors.black),
+                      children: [
+                        const TextSpan(text: 'Eu li e concordo com os '),
+                        TextSpan(
+                          text: 'Termos de Uso',
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            decoration: TextDecoration.underline,
+                          ),
+                          // Ação de clique para abrir a tela de termos
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const TermosDeUsoScreen(),
+                                ),
+                              );
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),  
             const SizedBox(height: 44),
             RoundedButton(
               isLoading: registerProvider.isLoading,
-              onPressed: () => registerProvider.register(),
+              onPressed: _aceitouTermos ? () => registerProvider.register() : null,
               text: 'Registrar',
             ),
-            
           ],
         ),
       );

@@ -17,8 +17,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileProvider profileProvider = context.watch<ProfileProvider>();
     SessionManager sessionManager = context.watch<SessionManager>();
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    return Center(
+      // padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         // Alinha os itens no topo da tela em vez do centro.
         mainAxisAlignment: MainAxisAlignment.start,

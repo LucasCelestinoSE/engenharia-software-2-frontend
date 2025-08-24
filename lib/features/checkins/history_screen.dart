@@ -31,7 +31,7 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFDFD9CB), // Cor de fundo da imagem
+      backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
         title: const Text(
           "Histórico de emoções",
