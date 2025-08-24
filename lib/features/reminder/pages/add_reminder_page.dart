@@ -41,7 +41,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = const Color(0xFFD9CFC2);
+    final bgColor = const Color(0xFFDFD9CB);
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -142,14 +142,14 @@ class _AddReminderPageState extends State<AddReminderPage> {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: selected ? Colors.black87 : Colors.grey.shade400,
+                      color: selected ? const Color(0xFF7DD6FF) : Colors.grey.shade400,
                       shape: BoxShape.circle,
                     ),
                     alignment: Alignment.center,
                     child: Text(
                       _days[i],
                       style: TextStyle(
-                        color: selected ? Colors.white : Colors.black87,
+                        color: const Color.fromRGBO(0, 0, 0, 0.867),
                         fontWeight: FontWeight.w600,
                         fontSize: 13,
                       ),

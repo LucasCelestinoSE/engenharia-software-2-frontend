@@ -11,7 +11,7 @@ import 'package:testando/widgets/rounded_button.dart';
 class CheckinScreen extends StatelessWidget {
   const CheckinScreen({Key? key}) : super(key: key);
 
-  static String routeName = '/checkin';
+  static const String routeName = '/checkin';
 
   @override
   Widget build(BuildContext context) {

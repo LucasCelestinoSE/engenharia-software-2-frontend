@@ -124,7 +124,7 @@ Widget build(BuildContext context) {
       : _artigosFiltradosPorCategoria[_filtroSelecionado] ?? [];
 
   return Scaffold(
-    backgroundColor: const Color.fromARGB(255, 240, 235, 222),
+    backgroundColor: const Color(0xFFDFD9CB),
     appBar: AppBar(
       leading: IconButton(
         icon: const Icon(Icons.arrow_back),

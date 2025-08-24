@@ -13,7 +13,7 @@ class _TermosDeUsoScreenState extends State<TermosDeUsoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 235, 222),
+      backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -39,16 +39,16 @@ class _TermosDeUsoScreenState extends State<TermosDeUsoScreen> {
             ),
             const SizedBox(height: 16),
             const Text(
-              'Ao utilizar nosso aplicativo, você concorda com os termos abaixo. Leia com atenção.',
+              'Ao utilizar nosso aplicativo, você concorda com os termos abaixo?\n',
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 8),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 223, 217, 203),
+                  color: const Color.fromARGB(28, 0, 0, 0),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: const SingleChildScrollView(
@@ -91,45 +91,6 @@ class _TermosDeUsoScreenState extends State<TermosDeUsoScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            Row(
-              children: [
-                Checkbox(
-                  value: _aceitouTermos,
-                  onChanged: (bool? newValue) {
-                    setState(() {
-                      _aceitouTermos = newValue ?? false;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                ),
-                const Expanded(
-                  child: Text('Concordo com os termos de uso e a política de privacidade'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: _aceitouTermos
-                  ? () {
-                      print('Usuário aceitou os termos e confirmou.');
-                    }
-                  : null, // O botão é desativado se a checkbox não estiver marcada
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 94, 189, 237),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: const Text(
-                'Confirmar',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testando/features/static/artigos.dart';
 import 'package:testando/features/static/respiracao.dart';
+import 'package:testando/widgets/bottom_bar_main.dart';
 
 class RecursoTelefone {
   final String nome;
@@ -11,6 +12,7 @@ class RecursoTelefone {
 
 class RecursosDeApoioScreen extends StatefulWidget {
   const RecursosDeApoioScreen({Key? key}) : super(key: key);
+  static const String routeName = '/recursosDeApoio';
 
   @override
   State<RecursosDeApoioScreen> createState() => _RecursosDeApoioScreenState();
@@ -29,7 +31,7 @@ class _RecursosDeApoioScreenState extends State<RecursosDeApoioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 235, 222),
+      backgroundColor: const Color(0xFFDFD9CB),
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -162,6 +164,7 @@ class _RecursosDeApoioScreenState extends State<RecursosDeApoioScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomBarMain(),
     );
   }
 }

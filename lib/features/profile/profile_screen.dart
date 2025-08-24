@@ -8,6 +8,7 @@ import 'package:testando/session_manager.dart';
 import 'package:testando/widgets/container.dart';
 import 'package:testando/widgets/graphical.dart';
 import 'package:testando/widgets/profile_card.dart';
+import 'package:testando/features/checkins/history_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,8 +17,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileProvider profileProvider = context.watch<ProfileProvider>();
     SessionManager sessionManager = context.watch<SessionManager>();
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    return Center(
+      // padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         // Alinha os itens no topo da tela em vez do centro.
         mainAxisAlignment: MainAxisAlignment.start,
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
           ProfileCard(
             name: profileProvider.user,
             age: 25,
-            imagePath: "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+            imagePath: "/assets/images/foto_perfil.png",
             isNetworkImage: true,
           ),
           Text("Visão semanal do Humor",
@@ -43,13 +44,20 @@ class ProfileScreen extends StatelessWidget {
              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CheckinScreen(),
+                  builder: (context) => const HistoryScreen(),
                 ),
               );
             },
-            child: Text("Ver Histórico"),
+            child: const Text(
+              "Ver Histórico",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 8),
         ],
       ),
     );
