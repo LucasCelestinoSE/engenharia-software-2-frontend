@@ -12,6 +12,10 @@ Para visualizar o frontend do projeto, siga os passos abaixo:
 
 4. Atenção ! Para o frontend estar funcionando perfeitamente, é necessário que a API esteja ligada ! 
 
+RECOMENDAÇÕES:
+![alt text](responsive_mode.png)
+
+
 REQUISITOS:
 -   Windows
 -   Python 3.x instalado e adicionado ao PATH do sistema.
@@ -19,5 +23,3 @@ REQUISITOS:
 
 PARA PARAR O SERVIDOR:
 -   Basta fechar a janela do terminal (preta) que foi aberta.
-
-Obrigado!
