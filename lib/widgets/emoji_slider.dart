@@ -16,11 +16,11 @@ class _EmojiSliderState extends State<EmojiSlider> {
 
   // Lista de emojis e seus paths SVG
   final List<String> _emojis = [
-    'images/emoji_vermelho.svg',
-    'images/emoji_azul.svg',
-    'images/emoji_cinza.svg',
-    'images/emoji_amarelo.svg',
-    'images/emoji_verde.svg',
+    '/assets/images/emoji_vermelho.svg',
+    '/assets/images/emoji_azul.svg',
+    '/assets/images/emoji_cinza.svg',
+    '/assets/images/emoji_amarelo.svg',
+    '/assets/images/emoji_verde.svg',
   ];
 
   @override

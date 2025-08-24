@@ -49,31 +49,31 @@ class GraphicalWidget extends StatelessWidget {
                   switch (value.toInt()) {
                     case 1:
                       return SvgPicture.asset(
-                        'images/emoji_vermelho.svg',
+                        '/assets/images/emoji_vermelho.svg',
                         width: 20,
                         height: 20,
                       );
                      case 2:
                       return SvgPicture.asset(
-                        'images/emoji_azul.svg',
+                        '/assets/images/emoji_azul.svg',
                         width: 20,
                         height: 20,
                       );
                     case 3:
                       return SvgPicture.asset(
-                        'images/emoji_cinza.svg',
+                        '/assets/images/emoji_cinza.svg',
                         width: 20,
                         height: 20,
                       );
                     case 4:
                       return SvgPicture.asset(
-                        'images/emoji_amarelo.svg',
+                        '/assets/images/emoji_amarelo.svg',
                         width: 20,
                         height: 20,
                       );
                     case 5:
                       return SvgPicture.asset(
-                        'images/emoji_verde.svg',
+                        '/assets/images/emoji_verde.svg',
                         width: 20,
                         height: 20,
                       );

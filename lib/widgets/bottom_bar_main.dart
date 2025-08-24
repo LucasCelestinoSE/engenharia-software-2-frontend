@@ -51,10 +51,10 @@ class BottomBarMain extends StatelessWidget {
 
   // Lista dos caminhos dos ícones
   final List<String> _iconPaths = const [
-    'images/person_icon.svg',      // Índice 0
-    'images/correct_icon.svg',     // Índice 1
-    'images/notification_icon.svg',// Índice 2
-    'images/hand_icon.svg',        // Índice 3
+    '/assets/images/person_icon.svg',      // Índice 0
+    '/assets/images/correct_icon.svg',     // Índice 1
+    '/assets/images/notification_icon.svg',// Índice 2
+    '/assets/images/hand_icon.svg',        // Índice 3
   ];
 
   // Função que descobre o índice da página atual pela rota

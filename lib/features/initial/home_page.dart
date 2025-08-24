@@ -22,7 +22,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image(
-              image: AssetImage('images/header.png'),
+              image: AssetImage('/assets/images/header.png'),
               width: 80,
               height: 80,
             ),
@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Image.asset('images/inital_image.png'),
+              Image.asset('/assets/images/inital_image.png'),
               const SizedBox(height: 16),
               Text(
                 'Bem-vindo ao $title!',
