@@ -2,8 +2,11 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:testando/data/api/requests/checkins/checkin_request.dart';
 import 'package:testando/data/api/requests/checkins/checkin_response.dart';
+import 'package:testando/data/api/requests/reminder_request.dart';
+import 'package:testando/data/api/requests/reminder_response.dart';
 import 'package:testando/data/api/requests/user_entry/user_login.dart';
 import 'package:testando/data/api/requests/user_entry/user_register.dart';
+import 'package:testando/data/api/responses/get_reminder_response.dart';
 import 'package:testando/data/api/responses/user_login_response.dart';
 import 'package:testando/data/api/responses/user_register_response.dart';
 import 'package:testando/data/models/user.dart';
@@ -22,4 +25,8 @@ abstract class ApiClient {
   Future<User> me({@Header("Authorization") String? authorization});
   @POST("/pessoas/{id}/check_ins")
   Future<CheckinResponse> createCheckIn(@Header("Authorization") String? authorization, @Path("id") int userId, @Body() CheckInRequest request);
+  @POST("/pessoas/{id}/lembretes")
+  Future<ReminderResponse> createReminder(@Header("Authorization") String? authorization, @Path("id") int userId, @Body() ReminderRequest request);
+  @GET("/pessoas/{id}/lembretes")
+  Future<List<GetReminderResponse>> getReminder(@Header("Authorization") String? authorization, @Path("id") int userId);
 }

@@ -33,7 +33,7 @@ void main() {
         
         // provider lembrete
         ChangeNotifierProvider<ReminderProvider>(
-          create: (context) => ReminderProvider(),
+          create: (context) => ReminderProvider(userRepository: context.read<UserRepository>(), sessionManager: context.read<SessionManager>()),
         ),
       ],
       child: const MyApp(),
