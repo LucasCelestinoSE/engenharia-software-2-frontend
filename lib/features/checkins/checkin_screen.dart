@@ -41,9 +41,9 @@ class CheckinScreen extends StatelessWidget {
                             onTap: () => checkinProvider.selectSingleFeeling("alegria"),
                           ),
                           FellingsText(
-                            fellingName: "Tristeza",
-                            isSelected: checkinProvider.selectedFeelings.contains("Tristeza"),
-                            onTap: () => checkinProvider.selectSingleFeeling("Tristeza"),
+                            fellingName: "tristeza",
+                            isSelected: checkinProvider.selectedFeelings.contains("tristeza"),
+                            onTap: () => checkinProvider.selectSingleFeeling("tristeza"),
                           ),
                           FellingsText(
                             fellingName: "angustia",
@@ -97,7 +97,6 @@ class CheckinScreen extends StatelessWidget {
                                   onPressed: () async {
                                     final success = await checkinProvider.submitCheckin();
                                     if (success) {
-                                      Navigator.pop(context);
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(content: Text('Check-in registrado com sucesso!')),
                                       );

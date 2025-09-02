@@ -1,16 +1,16 @@
 {
-    "name": "testando",
-    "short_name": "testando",
+    "name": "iMood",
+    "short_name": "iMood",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "description": "Sistema de Mapeamento Emocional",
+    "orientation": "portrait",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "assets/images/header.png",
             "sizes": "192x192",
             "type": "image/png"
         },

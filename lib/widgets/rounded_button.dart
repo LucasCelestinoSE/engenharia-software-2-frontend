@@ -24,7 +24,7 @@ class RoundedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: isEnabled && !isLoading ? onPressed : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor, // Aplica a cor de fundo
+        backgroundColor: buttonColor, 
         splashFactory: NoSplash.splashFactory,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),

@@ -56,6 +56,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20),
             TextField(
               onChanged: (value) => loginProvider.password = value,
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: "Senha",
                 labelStyle: TextStyle(

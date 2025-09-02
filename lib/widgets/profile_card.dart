@@ -4,14 +4,14 @@ class ProfileCard extends StatelessWidget {
   final String name;
   final int age;
   final String imagePath;
-  final bool isNetworkImage; // Parâmetro para indicar se é uma imagem da web
+  final bool isNetworkImage; 
 
   const ProfileCard({
     Key? key,
     required this.name,
     required this.age,
     required this.imagePath,
-    this.isNetworkImage = false, // Por padrão é falso (imagem local)
+    this.isNetworkImage = false, 
   }) : super(key: key);
 
   @override

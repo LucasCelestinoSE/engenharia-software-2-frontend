@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
           ProfileCard(
             name: profileProvider.user,
             age: 25,
-            imagePath: "/assets/images/foto_perfil.png",
+            imagePath: "assets/images/foto_perfil.png",
             isNetworkImage: true,
           ),
           Text("Visão semanal do Humor",
