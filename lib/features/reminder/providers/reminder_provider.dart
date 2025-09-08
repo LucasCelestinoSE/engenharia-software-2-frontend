@@ -6,18 +6,15 @@ import 'package:testando/features/reminder/models/reminder_model.dart';
 import 'package:testando/session_manager.dart';
 
 class ReminderProvider with ChangeNotifier {
-  // Lista de lembretes para simulação
   final List<Reminder> _reminders = [];
     bool _initialized = false;
 
-  // Método para inicializar o provider
   Future<void> init() async {
     if (!_initialized) {
       getReminderList();
       _initialized = true;
     }
   }
-  // Criar um conversor do formato ISO para formato legível
   List<Reminder> get reminders => _reminders;
   final UserRepository _userRepository;
   final SessionManager _sessionManager;

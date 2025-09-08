@@ -24,7 +24,7 @@ class _RespiracaoScreenState extends State<RespiracaoScreen> {
   Future<void> _loadAudio() async {
     try {
       await _player.setAsset('assets/meditacaoGuiada.mp3');
-      // Escuta mudanças no estado do player (play/pause).
+    
       _player.playerStateStream.listen((state) {
         if (state.playing) {
           setState(() {
@@ -37,7 +37,7 @@ class _RespiracaoScreenState extends State<RespiracaoScreen> {
         }
       });
 
-      // Escuta a duração do áudio.
+     
       _player.durationStream.listen((duration) {
         if (duration != null) {
           setState(() {
@@ -46,7 +46,7 @@ class _RespiracaoScreenState extends State<RespiracaoScreen> {
         }
       });
 
-      // Escuta a posição atual do áudio.
+     
       _player.positionStream.listen((position) {
         setState(() {
           _position = position;
@@ -56,14 +56,14 @@ class _RespiracaoScreenState extends State<RespiracaoScreen> {
       print("Erro ao carregar o áudio: $e");
     } finally {
       setState(() {
-        _isLoading = false; // O áudio está pronto, ou o carregamento falhou.
+        _isLoading = false; 
       });
     }
   }
 
   @override
   void dispose() {
-    _player.dispose(); // Libera os recursos do player.
+    _player.dispose(); 
     super.dispose();
   }
 
@@ -103,7 +103,7 @@ class _RespiracaoScreenState extends State<RespiracaoScreen> {
             ),
             const SizedBox(height: 48),
 
-            // Condição para exibir o botão ou o indicador de carregamento
+           
             _isLoading
                 ? const CircularProgressIndicator()
                 : GestureDetector(

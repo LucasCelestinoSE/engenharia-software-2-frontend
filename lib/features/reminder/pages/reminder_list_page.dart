@@ -3,26 +3,26 @@ import 'package:provider/provider.dart';
 import 'package:testando/features/reminder/pages/add_reminder_page.dart';
 import 'package:testando/features/reminder/providers/reminder_provider.dart';
 
-class ReminderListPage extends StatefulWidget { // Mudança aqui
+class ReminderListPage extends StatefulWidget { 
   static const String routeName = '/reminders';
 
   const ReminderListPage({super.key});
 
   @override
-  State<ReminderListPage> createState() => _ReminderListPageState(); // Adicione esta linha
+  State<ReminderListPage> createState() => _ReminderListPageState(); 
 }
 
-class _ReminderListPageState extends State<ReminderListPage> { // Crie esta nova classe
+class _ReminderListPageState extends State<ReminderListPage> { 
   @override
-  void initState() { // Aqui vai o initState
+  void initState() { 
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ReminderProvider>().getReminderList(); // ou .init() se você criou esse método
+      context.read<ReminderProvider>().getReminderList(); 
     });
   }
 
   @override
-  Widget build(BuildContext context) { // Mova todo o código do build para cá
+  Widget build(BuildContext context) {
     final reminderProvider = context.watch<ReminderProvider>();
     final bgColor = const Color(0xFFDFD9CB);
 
@@ -56,7 +56,7 @@ class _ReminderListPageState extends State<ReminderListPage> { // Crie esta nova
                 itemBuilder: (context, index) {
                   final reminder = reminderProvider.reminders[index];
                   return GestureDetector(
-                    // resto do código do item...
+                    
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
